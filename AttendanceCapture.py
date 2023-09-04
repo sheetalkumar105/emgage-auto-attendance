@@ -26,12 +26,22 @@ class AttendanceCapture(object):
     options.no_sandbox = True
     options.shm = True
     options._debugger_address = '0.0.0.0:9222'
-    browser=webdriver.Chrome(options=options)
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument("--remote-debugging-port=9222")
+    # browser = webdriver.Chrome('/usr/local/bin/chromedriver', chrome_options=chrome_options)
+
+
+    browser=webdriver.Chrome(options=chrome_options)
     params = {
         "latitude": 50.1109,
         "longitude": 8.6821,
         "accuracy": 100
     }
+
     browser.execute_cdp_cmd("Page.setGeolocationOverride", params)
     # browser = webdriver.Chrome(executable_path=os.path.join(os.getcwd(), config['DRIVER']), options=chromeOptions)
     browser.get("https://ess.emgage.work/#/login")
