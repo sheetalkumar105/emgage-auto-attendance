@@ -4,7 +4,6 @@ from pathlib import Path
 import time
 import os
 from datetime import datetime
-from dotenv import dotenv_values
 
 class AttendanceCapture(object):
 
@@ -22,10 +21,6 @@ class AttendanceCapture(object):
     # if you getting driver error then download new driver for latest crome, as crome keep getting updated, so does the driver
     # version of driver and crome should always be same
     # https://chromedriver.chromium.org/downloads
-
-    chromeDriverPath = os.path.join(os.getcwd(), config['DRIVER'])
-    if not os.path.isfile(chromeDriverPath):
-        print('path for chrome driver not found')
 
     browser=webdriver.Chrome()
     params = {
