@@ -6,8 +6,6 @@ from utils import Utils
 from flask_cors import CORS
 from flask import Flask, request, jsonify, send_from_directory
 from flask import send_file
-import pandas as pd
-
 
 
 app = Flask(__name__, static_folder='public')
