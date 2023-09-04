@@ -8,11 +8,10 @@ from datetime import datetime
 class AttendanceCapture(object):
 
   def execureSteps(self, data):
-    config = dotenv_values(".env")
-    chromeOptions = webdriver.ChromeOptions()
-    prefs = {"download.default_directory": Path}
-    chromeOptions.add_experimental_option("prefs", prefs)
-    chromeOptions.add_argument("window-size=1920,1080")
+    # chromeOptions = webdriver.ChromeOptions()
+    # prefs = {"download.default_directory": Path}
+    # chromeOptions.add_experimental_option("prefs", prefs)
+    # chromeOptions.add_argument("window-size=1920,1080")
     # chromeOptions.add_argument("--headless")
     # chromeOptions.add_argument('--no-sandbox')
     # chromeOptions.add_argument('--disable-dev-shm-usage')
@@ -22,7 +21,9 @@ class AttendanceCapture(object):
     # version of driver and crome should always be same
     # https://chromedriver.chromium.org/downloads
 
-    browser=webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.headless = True
+    browser=webdriver.Chrome(options=options)
     params = {
         "latitude": 50.1109,
         "longitude": 8.6821,
