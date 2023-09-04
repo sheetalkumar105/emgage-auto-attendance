@@ -23,6 +23,8 @@ class AttendanceCapture(object):
 
     options = webdriver.ChromeOptions()
     options.headless = True
+    options.no_sandbox = True
+    options.shm = True
     browser=webdriver.Chrome(options=options)
     params = {
         "latitude": 50.1109,
